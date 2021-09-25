@@ -32,5 +32,50 @@
 // checkTime every  minute
 //setInterval(checkTime(), (1000 * 60) * 1);
 
+//the current day works
 var dayYear = moment().format("MMM Do, YYYY");
 $("#currentDay").text(dayYear);
+
+var now = moment().format('H')
+var save = $('i')
+var textArea = $('textarea')
+var userInput = []
+
+//window.setInterval('refresh()', 10000);
+//save.each(function(i){
+//    $(this).on('click', localStorage())
+//})
+
+//function localStorage() {
+//    console.log('Hi')
+//    console.log($(this).siblings('textarea').val())
+//}
+
+//tried to call each text area so that it would change the colors but only the green one appears
+function refresh() {
+    if (textArea > now) {
+        textArea.toggleClass("future")
+    } 
+    else if (textArea === now) {
+        textArea.toggleClass("present")
+    }
+    else {
+        textArea.toggleClass("past")
+    } 
+     
+
+}
+
+
+//tried to make save button but was unsuccessful
+$('.saveBtn').on(function saveUserInput() {
+    var input = $(this).siblings('textarea2').val().trim();
+    var value = $(this).parent().attr('class');
+    localStorage.setItem(value, input);
+    localStorage.getItem(value, input);
+
+    saveUserInput();
+})
+
+
+refresh();
