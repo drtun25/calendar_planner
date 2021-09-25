@@ -1,13 +1,12 @@
-function nowDate() {
+
 var dayYear = moment().format("MMM Do, YYYY");
 $("#currentDay").text(dayYear);
 
-}
 
 $('.time-block').children().each(function() {
     var timeless = moment($(this).text(),"h:mm a");
     
-    var now = moment().format('H')
+    var now = moment().format();
     
     if(timeless.isSame(now, 'hour')) {
         $(this).next().addClass('present');
@@ -29,6 +28,7 @@ function storeValues() {
     var input = $(this).siblings('textarea').val().trim();
     var value = $(this).parent().attr('class');
     localStorage.setItem(input, value);
+    localStorage.getItem(input,value);
 }
 
 
